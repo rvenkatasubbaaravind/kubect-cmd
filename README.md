@@ -8,7 +8,10 @@
 :rocket: Clone the repository and, based on your OS, follow the instructions below:
 
 ```sh
+cd macos
+chmod +x installer.sh
 ./installer.sh
+kubectl-helper on 
 ```
 ### Preview 🤘
 
