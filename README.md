@@ -10,3 +10,9 @@
 ```sh
 ./installer.sh
 ```
+### Preview 🤘
+
+
+https://github.com/user-attachments/assets/8f73a991-9764-4b1c-b644-9b591370887d
+
+
