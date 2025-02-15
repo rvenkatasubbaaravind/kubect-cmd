@@ -1,4 +1,4 @@
-# kubect-cmd
+# kubectl-helper
 
 ### Developer Nightmares 😟
 - Checking which cluster you are on and accidentally changing on production.
