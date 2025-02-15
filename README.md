@@ -7,7 +7,7 @@
 ### Solution 😊
 :rocket: Clone the repository and, based on your OS, follow the instructions below:
 
-#### For macOS:
+#### To enable the kubectl context prompt:
 ```sh
 cd macos
 chmod +x installer.sh
