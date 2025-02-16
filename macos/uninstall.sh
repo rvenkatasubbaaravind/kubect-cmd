@@ -6,6 +6,6 @@ sudo rm /usr/local/bin/cns
 rm ~/.kubectl_helper_status
 # 10. Remove the kube prompt from the .zshrc file
 sed -i '' '/source ~\/.kube_prompt.sh/d' ~/.zshrc
-sed -i '' '/if \[\[ -f \"\$HOME\/.kubectl_helper_status\" \&\& \"\$(cat \$HOME\/.kubectl_helper_status)\" == \"on\" \]\]; then/,+3d' ~/.zshrc
+sed -i '' '/if \[\[ -f \"$HOME\/.kubectl_helper_status\" \&\& \"\$(cat $HOME\/.kubectl_helper_status)\" == \"on\" \]\]; then/,/fi/d' ~/.zshrc
 # 11. Source the updavited .zshrc to apply changes
 source ~/.zshrc
