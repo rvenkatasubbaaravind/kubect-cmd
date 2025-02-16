@@ -46,15 +46,17 @@ alias kdeldep='\$k \$del \$dep'
 # Delete the service with the given name
 alias kdelsvc='\$k \$del \$svc'
 
+# Logs for the pod
+alias klo='\$k \$lo'
 
+# Execute a command in the pod
+alias kex='\$k \$ex -it'
 " >> ~/.kubectl_aliases
 
 # Source the .kubectl_aliases file in .zshrc if not already sourced
-if ! grep -q "source ~/.kubectl_aliases" ~/.zshrc; then
-    echo "
+echo "
 source ~/.kubectl_aliases
 " >> ~/.zshrc
-fi
 
 # Source the .kubectl_aliases file to apply changes immediately
-source ~/.kubectl_aliases
+source ~/.zshrc
