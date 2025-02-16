@@ -9,8 +9,8 @@ parse_kube_context() {
     local filtered_context=\$(echo \"\$context\" | sed -E 's/.*infoblox\\.com-//')
 
     # Define green color and reset color codes
-    local GREEN=\"\\[\\e[32m\\]\"
-    local RESET=\"\\[\\e[0m\\]\"
+    local GREEN=\"%{\$(tput setaf 2)%}\"
+    local RESET=\"%{\$(tput sgr0)%}\"
 
     if [[ -n \"\$filtered_context\" ]]; then
         echo \"\${GREEN}(\${filtered_context} | \${namespace})\${RESET}\"
@@ -44,15 +44,14 @@ sudo mv ~/kubectl-helper /usr/local/bin/
 # 1. Make the script executable
 chmod +x ~/.kube_prompt.sh
 
-
 # 2. Add the kube prompt to the .zshrc file
 echo "
 source ~/.kube_prompt.sh 
 if [[ -f \"\$HOME/.kubectl_helper_status\" && \"\$(cat \$HOME/.kubectl_helper_status)\" == \"on\" ]]; then
     setopt PROMPT_SUBST
-    export PS1='%n@%m \$(parse_kube_context) %~ % '
+    export PS1='%n@%m \$(parse_kube_context) %~ %# '
 else
-    export PS1='%n@%m %~ % ' 
+    export PS1='%n@%m %~ %# ' 
 fi
 " >> ~/.zshrc
 
