@@ -49,12 +49,11 @@ echo "
 source ~/.kube_prompt.sh 
 if [[ -f \"\$HOME/.kubectl_helper_status\" && \"\$(cat \$HOME/.kubectl_helper_status)\" == \"on\" ]]; then
     setopt PROMPT_SUBST
-    export PS1='%n@%m \$(parse_kube_context) %~ %# '
+    export PS1='%n@%m \$(parse_kube_context) %1~ %# '
 else
-    export PS1='%n@%m %~ %# ' 
+    export PS1='%n@%m %1~ %# '
 fi
 " >> ~/.zshrc
-
 # 3. Source the updated .zshrc to apply changes
 source ~/.zshrc
 
@@ -67,8 +66,14 @@ if [ -z \"\$1\" ]; then
     exit 1
 fi
 
-kubectl config set-context --current --namespace=\"\$1\"
-echo \"Switched to namespace: \$1\"
+# Check if the namespace exists
+if kubectl get ns \"\$1\" > /dev/null 2>&1; then
+    kubectl config set-context --current --namespace=\"\$1\"
+    echo \"Switched to namespace: \$1\"
+else
+    echo \"Namespace '\$1' doesn't exist\"
+    exit 1
+fi
 " > ~/cns
 
 # 5. Make the namespace switch script executable
